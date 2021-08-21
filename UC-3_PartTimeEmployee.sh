@@ -11,16 +11,23 @@ else
     echo "Employee is Absent"
 fi
 
-isPartTime=0
+isPartTime=2
 isFullTime=1
 empRatePerHr=20
 
-if [[ $isFullTime -eq $Attendance ]]
+checksum=$((RANDOM%3))
+
+if [[ $isFullTime -eq $checksum ]]
 then
     empHrs=8;
-else
-    empHrs=0;
+	 echo "Employee Fulltime"
+elif [[ $isPartTime -eq $checksum ]]
+then
     empHrs=4;
+	 echo "Employee Parttime"
+else
+	 empHrs=0;
+	 echo "Employee Absent"
 fi
 
 echo "dailyWage=$(($empHrs*$empRatePerHr))"
